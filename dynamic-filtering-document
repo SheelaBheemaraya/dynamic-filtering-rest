@@ -1,0 +1,29 @@
+# dynamic-filtering-rest
+
+we define different filters for different services, according to need.
+Suppose there are three fields: name, phone, and salary. We want to send two fields: name and salary for the first service and name and phone for the second service.
+To implement dynamic filtering, we use a class named MappingJacksonValue. 
+
+Step 1: Open FilteringController.java file.
+Step 2: Create a constructor of MappingJacksonValue class and pass a bean (someBean) as a constructor argument.
+MappingJacksonValue mapping = new MappingJacksonValue (someBean);  
+
+Step 3: To configure the filters.FilterProvider is an abstract class. It has a single implementation of the SingleFilterProvider method. 
+Invoke the addFilter() method that has two parameters String id and SimpleBeanPropretyFilter filter
+
+FilterProvider filters=new SimpleFilterProvider().addFilter("SomeBeanFilter", filter);
+
+Step 4: Invoke the static method filterOutAllExcept() of the class SimpleBeanPropertyFilter class. 
+It filters all the fields in response except the fields which we have specified. 
+
+SimpleBeanPropertyFilter filter=SimpleBeanPropertyFilter.filterOutAllExcept("name", "salary");  
+
+Step 5: Configure the filters.
+
+mapping.setFilters(filters);  
+
+step 6: return mapping
+step7:return type of the method to MappingJacksonValue.
+Step 8: Open SomeBean.java file and define a filter by using the annotation @JsonFilter.
+
+------------------------------------------------------------------------------------------------------------------------------------
