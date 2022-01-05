@@ -27,3 +27,23 @@ step7:return type of the method to MappingJacksonValue.
 Step 8: Open SomeBean.java file and define a filter by using the annotation @JsonFilter.
 
 ------------------------------------------------------------------------------------------------------------------------------------
+GET:http://localhost:9191/filtering-list
+Response:
+[
+    {
+        "name": "Saurabh",
+        "phone": "8888888888"
+    },
+    {
+        "name": "Devesh",
+        "phone": "1111111111"
+    }
+]
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+GET:http://localhost:9191/filtering
+Response:{
+    "name": "Amit",
+    "salary": "39000"
+}
